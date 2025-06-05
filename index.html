@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Maryem Abidi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .portfolio-header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .name {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            color: #333;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #764ba2;
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, #f8f9ff, #e8ecff);
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .achievement-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .achievement-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9ff, #e8ecff);
+            border-radius: 12px;
+            padding: 20px;
+            border-top: 3px solid #667eea;
+        }
+
+        .skill-category h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            background: white;
+            margin: 8px 0;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #555;
+            border-left: 3px solid #764ba2;
+        }
+
+        .experience-item {
+            background: linear-gradient(135deg, #fff8f8, #fff0f0);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .job-period {
+            background: #764ba2;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        .company {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .responsibilities {
+            list-style: none;
+        }
+
+        .responsibilities li {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .responsibilities li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .education-item {
+            background: linear-gradient(135deg, #f0fff8, #e8ffe8);
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 4px solid #28a745;
+        }
+
+        .degree {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .institution {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .quote {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.1em;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .quote::before {
+            content: '"';
+            font-size: 3em;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .language-badges {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .language-badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-align: center;
+            min-width: 120px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .portfolio-header {
+                padding: 25px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .print-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .print-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .print-button {
+                display: none;
+            }
+            
+            .section {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête du Portfolio -->
+        <header class="portfolio-header">
+            <div class="profile-image">MA</div>
+            <h1 class="name">Maryem Abidi</h1>
+            <p class="title">Professeure d'Anglais & Spécialiste en Langues</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>52 21 04 05</span>
+                </div>
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <span>labidim005@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Tunis, Tunisie</span>
+                </div>
+                <div class="contact-item">
+                    <span>🎂</span>
+                    <span>23/02/2003</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Citation Professionnelle -->
+        <div class="quote">
+            Passionnée et collaborative, j'excelle dans l'établissement de relations positives et la transformation d'idées complexes en stratégies concrètes. Mon objectif est de mettre à profit ma créativité et mon sens de l'organisation pour contribuer à des projets porteurs de sens.
+        </div>
+
+        <!-- Réalisations Professionnelles -->
+        <section class="section">
+            <h2 class="section-title">🏆 Réalisations Professionnelles</h2>
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <h3 class="achievement-title">Enseignement Personnalisé en Ligne</h3>
+                    <p class="achievement-description">
+                        Développement et mise en œuvre de programmes d'apprentissage sur mesure pour une gamme diversifiée d'étudiants, adaptant chaque cours aux objectifs et niveaux individuels.
+                    </p>
+                </div>
+                <div class="achievement-card">
+                    <h3 class="achievement-title">Innovation Pédagogique Numérique</h3>
+                    <p class="achievement-description">
+                        Création d'environnements d'apprentissage virtuels dynamiques utilisant des outils numériques avancés et des plateformes interactives pour maximiser l'engagement étudiant.
+                    </p>
+                </div>
+                <div class="achievement-card">
+                    <h3 class="achievement-title">Amélioration Mesurable des Compétences</h3>
+                    <p class="achievement-description">
+                        Amélioration significative de la fluidité et de la confiance des élèves en anglais grâce à des méthodes d'enseignement focalisées sur la grammaire, le vocabulaire et la conversation.
+                    </p>
+                </div>
+                <div class="achievement-card">
+                    <h3 class="achievement-title">Gestion d'Entreprise Indépendante</h3>
+                    <p class="achievement-description">
+                        Gestion complète d'une pratique d'enseignement indépendant incluant l'acquisition de clients, la planification stratégique, la facturation et le maintien de relations clients durables.
+                    </p>
+                </div>
+                <div class="achievement-card">
+                    <h3 class="achievement-title">Communication Interculturelle</h3>
+                    <p class="achievement-description">
+                        Maîtrise de trois langues (arabe, anglais, français) permettant une communication efficace avec des étudiants de diverses origines culturelles.
+                    </p>
+                </div>
+                <div class="achievement-card">
+                    <h3 class="achievement-title">Évaluation et Suivi Personnalisé</h3>
+                    <p class="achievement-description">
+                        Mise en place de systèmes de feedback constructif et de suivi des progrès, avec ajustement continu des stratégies pédagogiques pour optimiser les résultats d'apprentissage.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expérience Professionnelle -->
+        <section class="section">
+            <h2 class="section-title">💼 Expérience Professionnelle</h2>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="job-title">Professeure d'Anglais en Ligne Indépendante</h3>
+                        <p class="company">Travailleur Indépendant • À distance (Sidi Bouzid, Tunisie)</p>
+                    </div>
+                    <div class="job-period">Juin - Septembre 2024</div>
+                </div>
+                <ul class="responsibilities">
+                    <li>Dispensation de cours d'anglais en ligne stimulants et personnalisés à un large éventail d'étudiants</li>
+                    <li>Conception de plans de cours axés sur la grammaire, le vocabulaire, la prononciation et les compétences conversationnelles</li>
+                    <li>Utilisation d'outils numériques et plateformes interactives pour créer des environnements d'apprentissage dynamiques</li>
+                    <li>Fourniture de commentaires constructifs et ajustement des stratégies pédagogiques selon les besoins</li>
+                    <li>Gestion complète de la pratique indépendante incluant acquisition de clients et relations clients</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Formation -->
+        <section class="section">
+            <h2 class="section-title">🎓 Formation</h2>
+            <div class="education-item">
+                <h3 class="degree">Licence en Langue et Littérature Anglaises</h3>
+                <p class="institution">Faculté des Lettres et des Sciences Humaines de Sfax</p>
+                <p class="company">Sfax, Tunisie • Septembre 2023 - Juin 2026/2027 (en cours)</p>
+            </div>
+        </section>
+
+        <!-- Compétences -->
+        <section class="section">
+            <h2 class="section-title">⚡ Compétences Professionnelles</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h4>🛠️ Compétences Techniques</h4>
+                    <ul class="skill-list">
+                        <li>Suite Microsoft Office (Word, Excel, PowerPoint, Outlook)</li>
+                        <li>Google Workspace (Docs, Sheets, Slides, Meet, Classroom)</li>
+                        <li>Plateformes d'apprentissage virtuelles (Zoom)</li>
+                        <li>Outils numériques éducatifs</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>📚 Enseignement et Pédagogie</h4>
+                    <ul class="skill-list">
+                        <li>Conception et diffusion de cours en ligne</li>
+                        <li>Élaboration de programmes personnalisés</li>
+                        <li>Planification pédagogique stratégique</li>
+                        <li>Évaluation et feedback constructif</li>
+                        <li>Pédagogie différenciée</li>
+                        <li>Gestion de classe virtuelle</li>
+                        <li>Enseignement ESL/EFL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>🤝 Compétences Interpersonnelles</h4>
+                    <ul class="skill-list">
+                        <li>Communication interculturelle</li>
+                        <li>Établissement de relations positives</li>
+                        <li>Empathie et écoute active</li>
+                        <li>Résolution de conflits</li>
+                        <li>Travail d'équipe et collaboration</li>
+                        <li>Patience et adaptabilité</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>🎯 Compétences Organisationnelles</h4>
+                    <ul class="skill-list">
+                        <li>Gestion du temps et priorisation</li>
+                        <li>Résolution créative de problèmes</li>
+                        <li>Adaptation aux nouvelles technologies</li>
+                        <li>Gestion de responsabilités multiples</li>
+                        <li>Respect des délais</li>
+                        <li>Innovation pédagogique</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Langues -->
+        <section class="section">
+            <h2 class="section-title">🌍 Compétences Linguistiques</h2>
+            <div class="language-badges">
+                <div class="language-badge">
+                    <strong>Arabe</strong><br>
+                    Langue Maternelle
+                </div>
+                <div class="language-badge">
+                    <strong>Anglais</strong><br>
+                    Courant
+                </div>
+                <div class="language-badge">
+                    <strong>Français</strong><br>
+                    Maîtrise
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <button class="print-button" onclick="window.print()">
+        📄 Imprimer Portfolio
+    </button>
+
+    <script>
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialiser les animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+
+        // Effet de survol pour les cartes de réalisation
+        document.querySelectorAll('.achievement-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
